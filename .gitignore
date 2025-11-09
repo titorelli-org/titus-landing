@@ -163,5 +163,4 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-data
-oauth-clients.yaml
+build/
