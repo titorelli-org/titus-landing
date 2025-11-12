@@ -5,6 +5,12 @@ import { Button } from "./ui/button";
 import { useLanguage } from "../lib/LanguageContext";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
+import img1 from "../assets/titus_bot_1.png";
+import img2 from "../assets/titus_bot_2.png";
+import img3 from "../assets/titus_bot_3.png";
+import img4 from "../assets/titus_bot_4.png";
+import img5 from "../assets/titus_bot_5.png";
+
 export function InstructionsCarousel() {
   const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -13,28 +19,24 @@ export function InstructionsCarousel() {
   // Placeholder images - replace with your actual instruction images
   const instructions = [
     {
-      image: "https://images.unsplash.com/photo-1762329370654-c4952d7d7cef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwaG9uZSUyMHR1dG9yaWFsJTIwYXBwfGVufDF8fHx8MTc2MjY4MzE2OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      image: img1,
       alt: t.instructions.step1.title,
     },
     {
-      image: "https://images.unsplash.com/photo-1758983308742-f4ba1f8c8cb4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBpbnRlcmZhY2UlMjBndWlkZXxlbnwxfHx8fDE3NjI2ODMxNjl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      image: img2,
       alt: t.instructions.step2.title,
     },
     {
-      image: "https://images.unsplash.com/photo-1755182334060-1578c6cac201?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbWFydHBob25lJTIwc2V0dGluZ3MlMjBzY3JlZW58ZW58MXx8fHwxNzYyNjgzMTY5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      image: img3,
       alt: t.instructions.step3.title,
     },
     {
-      image: "https://images.unsplash.com/photo-1644143155332-2ae7baf7d32f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcHAlMjBwZXJtaXNzaW9uJTIwc2NyZWVufGVufDF8fHx8MTc2MjY4MzE3MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      image: img4,
       alt: t.instructions.step4.title,
     },
     {
-      image: "https://images.unsplash.com/photo-1724343025504-3afb6d67566b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBzZWN1cml0eSUyMGludGVyZmFjZXxlbnwxfHx8fDE3NjI2ODMxNzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      image: img5,
       alt: t.instructions.step5.title,
-    },
-    {
-      image: "https://images.unsplash.com/photo-1715864999242-a1473e29befb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdWNjZXNzJTIwY2hlY2ttYXJrJTIwcGhvbmV8ZW58MXx8fHwxNzYyNjgzMTcxfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      alt: t.instructions.step6.title,
     },
   ];
 
@@ -53,7 +55,9 @@ export function InstructionsCarousel() {
 
   const handlePrev = () => {
     setDirection(-1);
-    setCurrentIndex((prev) => (prev - 1 + instructions.length) % instructions.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + instructions.length) % instructions.length,
+    );
   };
 
   const handleDotClick = (index: number) => {
@@ -120,7 +124,10 @@ export function InstructionsCarousel() {
           </Button>
 
           {/* Slides */}
-          <div className="relative overflow-hidden rounded-2xl" style={{ height: "640px" }}>
+          <div
+            className="relative overflow-hidden rounded-2xl"
+            style={{ height: "900px" }}
+          >
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentIndex}
@@ -146,14 +153,17 @@ export function InstructionsCarousel() {
                       ease: "easeInOut",
                     }}
                   />
-                  
+
                   {/* Image container with aspect ratio */}
-                  <div className="relative flex items-center justify-center p-8">
-                    <ImageWithFallback
-                      src={instructions[currentIndex].image}
-                      alt={instructions[currentIndex].alt}
-                      className="w-[390px] h-[640px] object-cover rounded-xl shadow-2xl"
-                    />
+                  <div className="relative flex items-center justify-center p-8 w-full h-full">
+                    {instructions[currentIndex] && (
+                      <ImageWithFallback
+                        src={instructions[currentIndex].image}
+                        alt={instructions[currentIndex].alt}
+                        className="object-contain rounded-xl shadow-2xl max-w-full max-h-full"
+                        style={{ aspectRatio: "1366/2600" }}
+                      />
+                    )}
                   </div>
                 </div>
               </motion.div>
