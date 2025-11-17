@@ -1,8 +1,14 @@
 import { motion } from "motion/react";
 import { Shield } from "lucide-react";
 import { useLanguage } from "../lib/LanguageContext";
+import { Button } from "./ui/button";
 
-export function Footer() {
+interface FooterProps {
+  onNavigateToBlog?: () => void;
+  showBlogLink?: boolean;
+}
+
+export function Footer({ onNavigateToBlog, showBlogLink = true }: FooterProps) {
   const { t } = useLanguage();
 
   return (
@@ -26,16 +32,28 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Platform credit */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-slate-400 text-center"
-          >
-            {t.footer.platform}{" "}
-            <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
-              {t.footer.platformName}
-            </span>
-          </motion.div>
+          {/* Blog link and Platform credit */}
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            {showBlogLink && onNavigateToBlog && (
+              <Button
+                variant="ghost"
+                onClick={onNavigateToBlog}
+                className="text-slate-400 hover:text-teal-400 hover:bg-teal-500/10"
+              >
+                {t.blog.title}
+              </Button>
+            )}
+            
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="text-slate-400 text-center"
+            >
+              {t.footer.platform}{" "}
+              <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                {t.footer.platformName}
+              </span>
+            </motion.div>
+          </div>
 
           {/* Copyright */}
           <div className="text-slate-500">

@@ -1,7 +1,7 @@
 
-  # Titus Bot Landing Page
+  # Titus Bot Landing Page (Add Blog)
 
-  This is a code bundle for Titus Bot Landing Page. The original project is available at https://www.figma.com/design/tL9P1z83lhLr0Yyx594bhR/Titus-Bot-Landing-Page.
+  This is a code bundle for Titus Bot Landing Page (Add Blog). The original project is available at https://www.figma.com/design/E0XNR0Lx6HB02mx5avM4H7/Titus-Bot-Landing-Page--Add-Blog-.
 
   ## Running the code
 

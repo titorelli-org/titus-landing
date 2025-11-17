@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { useLanguage } from "../lib/LanguageContext";
 
 export function Hero() {
+  const BOT_URL = "https://t.me/YourTitusBot"; // Replace with actual bot URL
   const { t } = useLanguage();
 
   return (
@@ -96,11 +97,7 @@ export function Hero() {
             size="lg"
             className="relative group bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 border-0 px-8 py-6 overflow-hidden"
           >
-            <a
-              href="https://t.me/titus_antispam_bot"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={BOT_URL} target="_blank" rel="noopener noreferrer">
               <motion.div
                 className="absolute inset-0 bg-white"
                 initial={{ x: "-100%", opacity: 0.3 }}

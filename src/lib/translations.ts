@@ -82,6 +82,12 @@ export const translations = {
       platformName: "Titorelli Platform",
       copyright: "Titus. All rights reserved.",
     },
+    blog: {
+      title: "Blog",
+      subtitle: "Latest updates and insights about Titus",
+      backToIndex: "Back to Blog",
+      notFound: "Article not found",
+    },
   },
   ru: {
     hero: {
@@ -142,7 +148,7 @@ export const translations = {
       },
       step5: {
         step: "Шаг 5",
-        title: "Разрешите блокиро��ку пользователей",
+        title: "Разрешите блокироку пользователей",
         description:
           "Включите права 'Блокировка пользователей', чтобы Titus мог удалять известных спамеров из вашей группы.",
       },
@@ -165,6 +171,12 @@ export const translations = {
       platform: "Создано на базе",
       platformName: "Titorelli Platform",
       copyright: "Titus. Все права защищены.",
+    },
+    blog: {
+      title: "Блог",
+      subtitle: "Последние обновления и аналитика о Titus",
+      backToIndex: "Вернуться к блогу",
+      notFound: "Статья не найдена",
     },
   },
 } as const;

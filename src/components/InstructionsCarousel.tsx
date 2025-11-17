@@ -55,9 +55,7 @@ export function InstructionsCarousel() {
 
   const handlePrev = () => {
     setDirection(-1);
-    setCurrentIndex(
-      (prev) => (prev - 1 + instructions.length) % instructions.length,
-    );
+    setCurrentIndex((prev) => (prev - 1 + instructions.length) % instructions.length);
   };
 
   const handleDotClick = (index: number) => {
@@ -124,10 +122,7 @@ export function InstructionsCarousel() {
           </Button>
 
           {/* Slides */}
-          <div
-            className="relative overflow-hidden rounded-2xl"
-            style={{ height: "900px" }}
-          >
+          <div className="relative overflow-hidden rounded-2xl" style={{ height: "900px" }}>
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentIndex}
@@ -153,7 +148,7 @@ export function InstructionsCarousel() {
                       ease: "easeInOut",
                     }}
                   />
-
+                  
                   {/* Image container with aspect ratio */}
                   <div className="relative flex items-center justify-center p-8 w-full h-full">
                     {instructions[currentIndex] && (

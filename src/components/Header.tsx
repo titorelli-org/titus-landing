@@ -3,15 +3,20 @@ import { Shield, Languages } from "lucide-react";
 import { Button } from "./ui/button";
 import { useLanguage } from "../lib/LanguageContext";
 
-export function Header() {
-  const { language, setLanguage } = useLanguage();
+interface HeaderProps {
+  onNavigateToBlog?: () => void;
+  showBlogLink?: boolean;
+}
+
+export function Header({ onNavigateToBlog, showBlogLink = true }: HeaderProps) {
+  const { language, setLanguage, t } = useLanguage();
 
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-slate-950/40 backdrop-blur-md border-b border-slate-800/50"
+      className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50"
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
@@ -22,34 +27,46 @@ export function Header() {
           <span className="text-white">Titus</span>
         </div>
 
-        {/* Language switcher */}
-        <div className="flex items-center gap-2">
-          <Languages className="w-4 h-4 text-teal-400" />
-          <div className="flex gap-1 bg-slate-900/50 rounded-lg p-1">
+        {/* Navigation and Language switcher */}
+        <div className="flex items-center gap-4">
+          {showBlogLink && onNavigateToBlog && (
             <Button
               variant="ghost"
-              size="sm"
-              onClick={() => setLanguage("en")}
-              className={`px-3 py-1 transition-all ${
-                language === "en"
-                  ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-slate-950 hover:from-teal-400 hover:to-cyan-400"
-                  : "text-slate-400 hover:text-white hover:bg-slate-800"
-              }`}
+              onClick={onNavigateToBlog}
+              className="text-slate-300 hover:text-teal-400 hover:bg-teal-500/10"
             >
-              EN
+              {t.blog.title}
             </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setLanguage("ru")}
-              className={`px-3 py-1 transition-all ${
-                language === "ru"
-                  ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-slate-950 hover:from-teal-400 hover:to-cyan-400"
-                  : "text-slate-400 hover:text-white hover:bg-slate-800"
-              }`}
-            >
-              RU
-            </Button>
+          )}
+          
+          <div className="flex items-center gap-2">
+            <Languages className="w-4 h-4 text-teal-400" />
+            <div className="flex gap-1 bg-slate-900/50 rounded-lg p-1">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setLanguage("en")}
+                className={`px-3 py-1 transition-all ${
+                  language === "en"
+                    ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-slate-950 hover:from-teal-400 hover:to-cyan-400"
+                    : "text-slate-400 hover:text-white hover:bg-slate-800"
+                }`}
+              >
+                EN
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setLanguage("ru")}
+                className={`px-3 py-1 transition-all ${
+                  language === "ru"
+                    ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-slate-950 hover:from-teal-400 hover:to-cyan-400"
+                    : "text-slate-400 hover:text-white hover:bg-slate-800"
+                }`}
+              >
+                RU
+              </Button>
+            </div>
           </div>
         </div>
       </div>

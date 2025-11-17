@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { useLanguage } from "../lib/LanguageContext";
 
 export function CTASection() {
+  const BOT_URL = "https://t.me/YourTitusBot"; // Replace with actual bot URL
   const { t } = useLanguage();
 
   return (
@@ -102,11 +103,7 @@ export function CTASection() {
                 size="lg"
                 className="relative group bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 border-0 px-10 py-6"
               >
-                <a
-                  href="https://t.me/titus_antispam_bot"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={BOT_URL} target="_blank" rel="noopener noreferrer">
                   <span className="flex items-center gap-2">
                     {t.cta.button}
                     <motion.span
