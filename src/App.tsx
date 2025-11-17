@@ -1,34 +1,39 @@
-import { Hero } from "./components/Hero";
-import { Features } from "./components/Features";
-import { InstructionsCarousel } from "./components/InstructionsCarousel";
-import { CTASection } from "./components/CTASection";
-import { Footer } from "./components/Footer";
-import { Header } from "./components/Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "./lib/LanguageContext";
-import { Blog } from "./components/blog/Blog";
-import { useState } from "react";
+import { Landing } from "./components/Landing";
+import { BlogIndex } from "./components/blog/BlogIndex";
+import { BlogArticle } from "./components/blog/BlogArticle";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 
 export default function App() {
-  const [showBlog, setShowBlog] = useState(false);
-
-  if (showBlog) {
-    return (
-      <LanguageProvider>
-        <Blog />
-      </LanguageProvider>
-    );
-  }
-
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-teal-950">
-        <Header onNavigateToBlog={() => setShowBlog(true)} />
-        <Hero />
-        <Features />
-        <InstructionsCarousel />
-        <CTASection />
-        <Footer onNavigateToBlog={() => setShowBlog(true)} />
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route
+            path="/blog"
+            element={
+              <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-teal-950">
+                <Header showBlogLink={false} />
+                <BlogIndex />
+                <Footer showBlogLink={false} />
+              </div>
+            }
+          />
+          <Route
+            path="/blog/:id"
+            element={
+              <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-teal-950">
+                <Header showBlogLink={false} />
+                <BlogArticle />
+                <Footer showBlogLink={false} />
+              </div>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </LanguageProvider>
   );
 }

@@ -1,26 +1,23 @@
 import { motion } from "motion/react";
 import { ArrowLeft, Calendar } from "lucide-react";
+import { useParams, Link } from "react-router-dom";
 import { blogPosts } from "../../lib/blogData";
 import { useLanguage } from "../../lib/LanguageContext";
 import { Button } from "../ui/button";
 import { CTASection } from "../CTASection";
 
-interface BlogArticleProps {
-  articleId: string;
-  onBack: () => void;
-}
-
-export function BlogArticle({ articleId, onBack }: BlogArticleProps) {
+export function BlogArticle() {
+  const { id } = useParams<{ id: string }>();
   const { language, t } = useLanguage();
-  const article = blogPosts.find((post) => post.id === articleId);
+  const article = blogPosts.find((post) => post.id === id);
 
   if (!article) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-teal-950 pt-24 pb-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-slate-400">{t.blog.notFound}</p>
-          <Button onClick={onBack} className="mt-4">
-            {t.blog.backToIndex}
+          <Button asChild className="mt-4">
+            <Link to="/blog">{t.blog.backToIndex}</Link>
           </Button>
         </div>
       </div>
@@ -38,11 +35,13 @@ export function BlogArticle({ articleId, onBack }: BlogArticleProps) {
           >
             <Button
               variant="ghost"
-              onClick={onBack}
+              asChild
               className="mb-8 text-teal-400 hover:text-teal-300 hover:bg-teal-500/10"
             >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              {t.blog.backToIndex}
+              <Link to="/blog">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                {t.blog.backToIndex}
+              </Link>
             </Button>
           </motion.div>
 

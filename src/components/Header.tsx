@@ -1,14 +1,14 @@
 import { motion } from "motion/react";
 import { Shield, Languages } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { useLanguage } from "../lib/LanguageContext";
 
 interface HeaderProps {
-  onNavigateToBlog?: () => void;
   showBlogLink?: boolean;
 }
 
-export function Header({ onNavigateToBlog, showBlogLink = true }: HeaderProps) {
+export function Header({ showBlogLink = true }: HeaderProps) {
   const { language, setLanguage, t } = useLanguage();
 
   return (
@@ -20,22 +20,22 @@ export function Header({ onNavigateToBlog, showBlogLink = true }: HeaderProps) {
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3">
           <div className="bg-gradient-to-br from-teal-500 to-cyan-500 p-2 rounded-lg">
             <Shield className="w-6 h-6 text-slate-950" />
           </div>
           <span className="text-white">Titus</span>
-        </div>
+        </Link>
 
         {/* Navigation and Language switcher */}
         <div className="flex items-center gap-4">
-          {showBlogLink && onNavigateToBlog && (
+          {showBlogLink && (
             <Button
               variant="ghost"
-              onClick={onNavigateToBlog}
+              asChild
               className="text-slate-300 hover:text-teal-400 hover:bg-teal-500/10"
             >
-              {t.blog.title}
+              <Link to="/blog">{t.blog.title}</Link>
             </Button>
           )}
           

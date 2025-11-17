@@ -1,14 +1,14 @@
 import { motion } from "motion/react";
 import { Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useLanguage } from "../lib/LanguageContext";
 import { Button } from "./ui/button";
 
 interface FooterProps {
-  onNavigateToBlog?: () => void;
   showBlogLink?: boolean;
 }
 
-export function Footer({ onNavigateToBlog, showBlogLink = true }: FooterProps) {
+export function Footer({ showBlogLink = true }: FooterProps) {
   const { t } = useLanguage();
 
   return (
@@ -22,7 +22,7 @@ export function Footer({ onNavigateToBlog, showBlogLink = true }: FooterProps) {
           className="flex flex-col md:flex-row items-center justify-between gap-6"
         >
           {/* Logo and branding */}
-          <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
             <div className="bg-gradient-to-br from-teal-500 to-cyan-500 p-2 rounded-lg">
               <Shield className="w-6 h-6 text-slate-950" />
             </div>
@@ -30,17 +30,17 @@ export function Footer({ onNavigateToBlog, showBlogLink = true }: FooterProps) {
               <div className="text-white">{t.footer.title}</div>
               <div className="text-slate-500">{t.footer.subtitle}</div>
             </div>
-          </div>
+          </Link>
 
           {/* Blog link and Platform credit */}
           <div className="flex flex-col md:flex-row items-center gap-4">
-            {showBlogLink && onNavigateToBlog && (
+            {showBlogLink && (
               <Button
                 variant="ghost"
-                onClick={onNavigateToBlog}
+                asChild
                 className="text-slate-400 hover:text-teal-400 hover:bg-teal-500/10"
               >
-                {t.blog.title}
+                <Link to="/blog">{t.blog.title}</Link>
               </Button>
             )}
             

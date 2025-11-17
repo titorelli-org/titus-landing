@@ -1,14 +1,11 @@
 import { motion } from "motion/react";
 import { ArrowRight, Calendar } from "lucide-react";
+import { Link } from "react-router-dom";
 import { blogPosts } from "../../lib/blogData";
 import { useLanguage } from "../../lib/LanguageContext";
 import { Button } from "../ui/button";
 
-interface BlogIndexProps {
-  onSelectArticle: (id: string) => void;
-}
-
-export function BlogIndex({ onSelectArticle }: BlogIndexProps) {
+export function BlogIndex() {
   const { language, t } = useLanguage();
 
   return (
@@ -30,47 +27,48 @@ export function BlogIndex({ onSelectArticle }: BlogIndexProps) {
 
         <div className="space-y-6">
           {blogPosts.map((post, index) => (
-            <motion.article
-              key={post.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow cursor-pointer group"
-              onClick={() => onSelectArticle(post.id)}
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex-1">
-                  <h2 className="mb-3 text-slate-900 group-hover:text-teal-600 transition-colors">
-                    {post.title[language]}
-                  </h2>
-                  
-                  <div className="flex items-center gap-2 text-slate-600 mb-4">
-                    <Calendar className="w-4 h-4" />
-                    <time dateTime={post.date}>
-                      {new Date(post.date).toLocaleDateString(
-                        language === "ru" ? "ru-RU" : "en-US",
-                        { year: "numeric", month: "long", day: "numeric" }
-                      )}
-                    </time>
+            <Link to={`/blog/${post.id}`} className="block">
+              <motion.article
+                key={post.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow cursor-pointer group"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <h2 className="mb-3 text-slate-900 group-hover:text-teal-600 transition-colors">
+                      {post.title[language]}
+                    </h2>
+                    
+                    <div className="flex items-center gap-2 text-slate-600 mb-4">
+                      <Calendar className="w-4 h-4" />
+                      <time dateTime={post.date}>
+                        {new Date(post.date).toLocaleDateString(
+                          language === "ru" ? "ru-RU" : "en-US",
+                          { year: "numeric", month: "long", day: "numeric" }
+                        )}
+                      </time>
+                    </div>
+
+                    <p className="text-slate-700">
+                      {post.content[language]
+                        .replace(/<[^>]*>/g, "")
+                        .substring(0, 200)}
+                      ...
+                    </p>
                   </div>
 
-                  <p className="text-slate-700">
-                    {post.content[language]
-                      .replace(/<[^>]*>/g, "")
-                      .substring(0, 200)}
-                    ...
-                  </p>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-teal-600 group-hover:text-teal-700 group-hover:translate-x-1 transition-transform"
+                  >
+                    <ArrowRight className="w-5 h-5" />
+                  </Button>
                 </div>
-
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-teal-600 group-hover:text-teal-700 group-hover:translate-x-1 transition-transform"
-                >
-                  <ArrowRight className="w-5 h-5" />
-                </Button>
-              </div>
-            </motion.article>
+              </motion.article>
+            </Link>
           ))}
         </div>
       </div>
