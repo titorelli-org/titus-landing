@@ -13,176 +13,70 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    id: "introducing-titus",
+    id: "beta-release",
     title: {
-      en: "Introducing Titus: Your AI-Powered Telegram Guardian",
-      ru: "Представляем Titus: Ваш AI-защитник Telegram",
+      en: "Titus-Bot: first beta release",
+      ru: "Titus-Bot: первый бета-релиз",
     },
-    date: "2024-11-15",
+    date: "2024-12-15",
     content: {
       en: `
-        <h2>The Problem with Telegram Spam</h2>
-        <p>Telegram groups have become increasingly popular for communities, but with growth comes challenges. Spam messages, bot attacks, and malicious users can quickly turn a thriving community into a chaotic mess.</p>
+        <h2>Spam Protection for Telegram Groups — Without CAPTCHA</h2>
+        <p>Spam in Telegram has become a constant headache for public group admins. Most solutions force a tough choice: either lock the group behind CAPTCHAs and lose real members, or let spam take over. <strong>Titus-Bot offers a better way: reliable protection from spam in Telegram — without CAPTCHA.</strong></p>
+        <p>This isn't just another spam bot. Titus-Bot was built from real-world moderation experience in active technical communities. And as of today, it's available in beta for admins of public Telegram groups.</p>
         
-        <h2>Our Solution</h2>
-        <p>That's why we built <strong>Titus</strong> - an AI-powered bot that works 24/7 to keep your Telegram groups clean and safe. Using cutting-edge machine learning technology, Titus can:</p>
+        <h3>How It Works</h3>
+        <p>Titus-Bot uses a three-layer defense system:</p>
+        <ol>
+          <li><strong>Instant blocking via spam databases</strong><br/>
+          Every new member is checked against trusted public spam lists — CAS (Combot Anti-Spam) and Lols. If a user appears in either database, they're blocked immediately upon joining — before they can send a single message. These lists are highly accurate: if someone's flagged, they're virtually guaranteed to be a spammer.</li>
+          
+          <li><strong>Text-based spam detection</strong><br/>
+          For new bots not yet in databases, Titus-Bot analyzes message content using its own spam corpus. If a message matches known spam patterns, it's deleted — but the user isn't banned. This gives real people a chance to rephrase and participate. Spam bots, in contrast, keep repeating the same message and eventually get filtered out.<br/>
+          Legitimate users rarely even notice the filter — it's that precise. And once someone passes the text check, they're added to a <strong>global allowlist</strong>, so they'll never be flagged again — in any group using Titus-Bot.</li>
+          
+          <li><strong>Image-based spam detection (alpha)</strong><br/>
+          Some spammers now send images with text instead of plain messages. This feature is currently in alpha: Titus-Bot is collecting examples to train an image-analysis model. For now, such images are allowed through, but the system is learning — and full image-based filtering is coming soon.</li>
+        </ol>
         
-        <ul>
-          <li>Detect spam messages in real-time</li>
-          <li>Check new members against known spammer databases</li>
-          <li>Identify spam hidden in images (alpha feature)</li>
-        </ul>
+        <h3>Why "No CAPTCHA" Matters</h3>
+        <p>CAPTCHAs and "click-to-verify" buttons create friction — especially in professional communities where speed and ease matter. Titus-Bot proves that a <strong>Telegram antispam</strong> solution can be strict with bots and respectful to humans.</p>
+        <p>The beta is already running smoothly in several groups, silently handling dozens of spam attempts daily — while keeping the experience seamless for real members.</p>
         
-        <figure>
-          <picture>
-            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800" alt="AI Technology" />
-          </picture>
-          <figcaption>Powered by advanced AI and machine learning</figcaption>
-        </figure>
+        <hr/>
         
-        <h2>How It Works</h2>
-        <p>Titus uses a proprietary ML model trained on millions of spam messages. When a new message is posted in your group, Titus analyzes it in milliseconds and takes action if needed.</p>
-        
-        <blockquote>
-          "Since adding Titus to our community, we've seen a 95% reduction in spam messages. It's like having a dedicated moderator that never sleeps." - Community Admin
-        </blockquote>
-        
-        <h3>Getting Started</h3>
-        <p>Setting up Titus takes less than 5 minutes. Simply add the bot to your group, grant it admin permissions, and you're protected. <a href="https://t.me/YourTitusBot">Try Titus today</a> and experience the difference.</p>
-        
-        <h2>What's Next</h2>
-        <p>We're constantly improving Titus with new features and capabilities. Stay tuned for updates on our <em>image spam detection</em> feature, which is currently in alpha testing.</p>
+        <p><strong>Ready to eliminate spam — without making life harder for your community?</strong><br/>
+        Add <a href="https://t.me/titus_antispam_bot">@titus_antispam_bot</a> to your public group, grant it "Delete messages" and "Ban users" permissions (nothing else is needed), and let your community stay clean, open, and welcoming.</p>
+        <p><strong>Titus-Bot: protection from spam in Telegram — no compromises.</strong></p>
       `,
       ru: `
-        <h2>Проблема спама в Telegram</h2>
-        <p>Группы в Telegram становятся всё более популярными для сообществ, но с ростом приходят и проблемы. Спам-сообщения, атакиботов и вредоносные пользователи могут быстро превратить процветающее сообщество в хаос.</p>
+        <h2>Защита Telegram-групп от спама без капчи</h2>
+        <p>Спам в Telegram стал повседневной проблемой для публичных групп. Многие администраторы вынуждены выбирать: либо ставить капчу и терять новых участников, либо терпеть потоки рекламы и ботов. Titus-Bot предлагает третий путь — <strong>надёжная защита от спама в Telegram без капчи</strong>.</p>
+        <p>Это не просто ещё один спам бот. Titus-Bot сочетает проверенные методы и собственный опыт модерации реальных технических сообществ. И с сегодняшнего дня он доступен в бета-версии для администраторов публичных групп.</p>
         
-        <h2>Наше решение</h2>
-        <p>Вот почему мы создали <strong>Titus</strong> - бота на основе AI, который работает 24/7, чтобы ваши группы в Telegram оставались чистыми и безопасными. Используя передовые технологии машинного обучения, Titus может:</p>
+        <h3>Как это работает?</h3>
+        <p>Titus-Bot использует три уровня защиты:</p>
+        <ol>
+          <li><strong>Мгновенная блокировка по спам-базам</strong><br/>
+          Каждый новый участник проверяется по надёжным публичным спискам спамеров — CAS (Combot Anti-Spam) и Lols . Если аккаунт уже помечен как спамер, он блокируется сразу при входе — не успев отправить ни одного сообщения.</li>
+          
+          <li><strong>Текстовый анализ сообщений</strong><br/>
+          Если спамер новый и ещё не в базах, вступает в игру ML-модель. Она сравнивает текст сообщения с собственной базой реального спама. При совпадении — сообщение удаляется, но пользователь <strong>не банится</strong>. Это даёт шанс легитимным участникам переформулировать сообщение. Спам-боты, напротив, повторяют одно и то же — и в итоге отсеиваются.</li>
+          
+          <li><strong>Глобальный белый список</strong><br/>
+          Как только пользователь доказывает, что он не спамер (отправляя допустимое сообщение), он попадает в список проверенных. Такой участник больше не будет подвергаться проверкам — ни в вашей группе, ни в любой другой, где работает Titus-Bot.</li>
+        </ol>
+        <p>В будущем появится и третий слой — анализ изображений. Сейчас эта функция в альфа-режиме: бот постепенно накапливает примеры спама-картинок, чтобы в будущем распознавать текст на них через нейросеть. Пока такие сообщения пропускаются, но это временно.</p>
         
-        <ul>
-          <li>Обнаруживать спам-сообщения в реальном времени</li>
-          <li>Проверять новых участников по базам известных спамеров</li>
-          <li>Определять спам, скрытый в изображениях (альфа-функция)</li>
-        </ul>
+        <h3>Почему без капчи — это важно?</h3>
+        <p>Капчи и кнопки «Я не робот» отпугивают реальных людей — особенно в профессиональных сообществах, где ценится скорость и удобство. Titus-Bot доказывает: <strong>антиспам Telegram-решение может быть строгим к ботам и дружелюбным к людям</strong>.</p>
+        <p>Бета-версия уже стабильно работает в нескольких группах, обрабатывая десятки попыток спама ежедневно — при этом участники даже не замечают его работы.</p>
         
-        <figure>
-          <picture>
-            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800" alt="AI Technology" />
-          </picture>
-          <figcaption>Работает на передовых AI и машинном обучении</figcaption>
-        </figure>
+        <hr/>
         
-        <h2>Как это работает</h2>
-        <p>Titus использует собственную ML-модель, обученную на миллионах спам-сообщений. Когда новое сообщение публикуется в вашей группе, Titus анализирует его за миллисекунды и принимает меры при необходимости.</p>
-        
-        <blockquote>
-          "С тех пор как мы добавили Titus в наше сообщество, количество спама сократилось на 95%. Это как иметь преданного модератора, который никогда не спит." - Администратор сообщества
-        </blockquote>
-        
-        <h3>Начало работы</h3>
-        <p>Настройка Titus занимает меньше 5 минут. Просто добавьте бота в свою группу, предоставьте права администратора, и вы защищены. <a href="https://t.me/YourTitusBot">Попробуйте Titus сегодня</a> и почувствуйте разницу.</p>
-        
-        <h2>Что дальше</h2>
-        <p>Мы постоянно улучшаем Titus новыми функциями и возможностями. Следите за обновлениями нашей функции <em>определения спама на изображениях</em>, которая сейчас находится в альфа-тестировании.</p>
-      `,
-    },
-  },
-  {
-    id: "ai-spam-detection",
-    title: {
-      en: "How Our AI Spam Detection Works",
-      ru: "Как работает наше AI-определение спама",
-    },
-    date: "2024-11-10",
-    content: {
-      en: `
-        <h2>The Technology Behind Titus</h2>
-        <p>At the heart of Titus lies a sophisticated machine learning model that has been trained on millions of spam and legitimate messages. Let's dive into how it works.</p>
-        
-        <h3>Data Collection</h3>
-        <p>We've collected and analyzed over <strong>5 million messages</strong> from various Telegram communities. This diverse dataset helps our model understand different types of spam patterns across multiple languages and contexts.</p>
-        
-        <h3>Feature Extraction</h3>
-        <p>Our system analyzes multiple features of each message:</p>
-        <ul>
-          <li>Message length and structure</li>
-          <li>Presence of suspicious links</li>
-          <li>Repetitive patterns</li>
-          <li>User behavior history</li>
-          <li>Time-based patterns</li>
-        </ul>
-        
-        <figure>
-          <picture>
-            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800" alt="Machine Learning" />
-          </picture>
-          <figcaption>Our ML model processes messages in real-time</figcaption>
-        </figure>
-        
-        <h2>Real-Time Processing</h2>
-        <p>Speed is crucial in spam detection. Our infrastructure can process messages in <em>under 100 milliseconds</em>, ensuring spam is caught before it spreads.</p>
-        
-        <blockquote>
-          "The key to effective spam detection is not just accuracy, but speed. By the time a human moderator sees spam, it's already too late."
-        </blockquote>
-        
-        <h3>Continuous Learning</h3>
-        <p>Spammers are constantly evolving their tactics. That's why Titus continuously learns from new spam patterns and adapts its detection algorithms accordingly.</p>
-        
-        <h2>Accuracy Metrics</h2>
-        <p>Our current model achieves:</p>
-        <ul>
-          <li><strong>98.5%</strong> spam detection rate</li>
-          <li><strong>0.2%</strong> false positive rate</li>
-          <li><strong><100ms</strong> average processing time</li>
-        </ul>
-        
-        <p>These metrics are constantly monitored and improved as we gather more data and refine our algorithms.</p>
-      `,
-      ru: `
-        <h2>Технология за Titus</h2>
-        <p>В основе Titus лежит сложная модель машинного обучения, обученная на миллионах спам-сообщений и легитимных сообщений. Давайте разберемся, как это работает.</p>
-        
-        <h3>Сбор данных</h3>
-        <p>Мы собрали и проанализировали более <strong>5 миллионов сообщений</strong> из различных сообществ Telegram. Этот разнообразный набор данных помогает нашей модели понимать различные типы спам-паттернов на нескольких языках и в разных контекстах.</p>
-        
-        <h3>Извлечение признаков</h3>
-        <p>Наша система анализирует множество признаков каждого сообщения:</p>
-        <ul>
-          <li>Длина и структура сообщения</li>
-          <li>Наличие подозрительных ссылок</li>
-          <li>Повторяющиеся паттерны</li>
-          <li>История поведения пользователя</li>
-          <li>Временные паттерны</li>
-        </ul>
-        
-        <figure>
-          <picture>
-            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800" alt="Machine Learning" />
-          </picture>
-          <figcaption>Наша ML-модель обрабатывает сообщения в реальном времени</figcaption>
-        </figure>
-        
-        <h2>Обработка в реальном времени</h2>
-        <p>Скорость критична для обнаружения спама. Наша инфраструктура может обрабатывать сообщения <em>менее чем за 100 миллисекунд</em>, обеспечивая обнаружение спама до того, как он распространится.</p>
-        
-        <blockquote>
-          "Ключ к эффективному обнаружению спама - это не только точность, но и скорость. К тому времени, когда модератор-человек увидит спам, уже слишком поздно."
-        </blockquote>
-        
-        <h3>Непрерывное обучение</h3>
-        <p>Спамеры постоянно меняют свою тактику. Поэтому Titus непрерывно учится на новых спам-паттернах и соответствующим образом адаптирует свои алгоритмы обнаружения.</p>
-        
-        <h2>Метрики точности</h2>
-        <p>Наша текущая модель достигает:</p>
-        <ul>
-          <li><strong>98.5%</strong> точность обнаружения спама</li>
-          <li><strong>0.2%</strong> ложных срабатываний</li>
-          <li><strong><100мс</strong> среднее время обработки</li>
-        </ul>
-        
-        <p>Эти метрики постоянно отслеживаются и улучшаются по мере сбора большего количества данных и совершенствования наших алгоритмов.</p>
+        <p><strong>Готовы избавиться от спама — не усложняя жизнь своим пользователям?</strong><br/>
+        Добавьте <a href="https://t.me/titus_antispam_bot">@titus_antispam_bot</a> в свою публичную группу, дайте права на удаление сообщений и блокировку пользователей — и пусть ваше сообщество остаётся чистым, открытым и комфортным.</p>
+        <p><strong>Titus-Bot — защита от спама в Telegram без компромиссов.</strong></p>
       `,
     },
   },
