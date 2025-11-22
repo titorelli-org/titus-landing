@@ -7,16 +7,14 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { LocaleRedirect } from "./components/LocaleRedirect";
 import { CanonicalLink } from "./components/CanonicalLink";
-import { ErrorBoundary } from "./components/ErrorBoundary";
 
 export default function App() {
   return (
-    <ErrorBoundary>
-      <BrowserRouter>
-        <LanguageProvider>
-          <LocaleRedirect />
-          <CanonicalLink />
-          <Routes>
+    <BrowserRouter>
+      <LanguageProvider>
+        <LocaleRedirect />
+        <CanonicalLink />
+        <Routes>
           {/* Locale-prefixed routes - order matters, more specific first */}
           <Route
             path="/ru/blog/:id"
@@ -60,7 +58,7 @@ export default function App() {
           />
           <Route path="/ru" element={<Landing />} />
           <Route path="/en" element={<Landing />} />
-          
+
           {/* Fallback routes (will be redirected by LocaleRedirect) */}
           <Route
             path="/blog/:id"
@@ -83,9 +81,8 @@ export default function App() {
             }
           />
           <Route path="/" element={<Landing />} />
-          </Routes>
-        </LanguageProvider>
-      </BrowserRouter>
-    </ErrorBoundary>
+        </Routes>
+      </LanguageProvider>
+    </BrowserRouter>
   );
 }
