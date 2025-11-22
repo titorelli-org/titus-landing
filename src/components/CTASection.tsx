@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import { useLanguage } from "../lib/LanguageContext";
 
 export function CTASection() {
-  const BOT_URL = "https://t.me/YourTitusBot"; // Replace with actual bot URL
+  const BOT_URL = "https://t.me/titus_antispam_bot"; // Replace with actual bot URL
   const { t } = useLanguage();
 
   return (
