@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { ArrowRight, Calendar } from "lucide-react";
-import { Link } from "react-router-dom";
+import { LocalizedLink } from "../LocalizedLink";
 import { blogPosts } from "../../lib/blogData";
 import { useLanguage } from "../../lib/LanguageContext";
 import { Button } from "../ui/button";
@@ -27,7 +27,7 @@ export function BlogIndex() {
 
         <div className="space-y-6">
           {blogPosts.map((post, index) => (
-            <Link to={`/blog/${post.id}`} className="block">
+            <LocalizedLink key={post.id} to={`/blog/${post.id}`} className="block">
               <motion.article
                 key={post.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -65,7 +65,7 @@ export function BlogIndex() {
                   </Button>
                 </div>
               </motion.article>
-            </Link>
+            </LocalizedLink>
           ))}
         </div>
       </div>

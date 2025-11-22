@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Shield } from "lucide-react";
-import { Link } from "react-router-dom";
+import { LocalizedLink } from "./LocalizedLink";
 import { useLanguage } from "../lib/LanguageContext";
 import { Button } from "./ui/button";
 
@@ -22,7 +22,7 @@ export function Footer({ showBlogLink = true }: FooterProps) {
           className="flex flex-col md:flex-row items-center justify-between gap-6"
         >
           {/* Logo and branding */}
-          <Link to="/" className="flex items-center gap-3">
+          <LocalizedLink to="/" className="flex items-center gap-3">
             <div className="bg-gradient-to-br from-teal-500 to-cyan-500 p-2 rounded-lg">
               <Shield className="w-6 h-6 text-slate-950" />
             </div>
@@ -30,7 +30,7 @@ export function Footer({ showBlogLink = true }: FooterProps) {
               <div className="text-white">{t.footer.title}</div>
               <div className="text-slate-500">{t.footer.subtitle}</div>
             </div>
-          </Link>
+          </LocalizedLink>
 
           {/* Blog link and Platform credit */}
           <div className="flex flex-col md:flex-row items-center gap-4">
@@ -40,7 +40,7 @@ export function Footer({ showBlogLink = true }: FooterProps) {
                 asChild
                 className="text-slate-400 hover:text-teal-400 hover:bg-teal-500/10"
               >
-                <Link to="/blog">{t.blog.title}</Link>
+                <LocalizedLink to="/blog">{t.blog.title}</LocalizedLink>
               </Button>
             )}
             

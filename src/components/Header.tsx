@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Shield, Languages } from "lucide-react";
-import { Link } from "react-router-dom";
+import { LocalizedLink } from "./LocalizedLink";
 import { Button } from "./ui/button";
 import { useLanguage } from "../lib/LanguageContext";
 
@@ -20,12 +20,12 @@ export function Header({ showBlogLink = true }: HeaderProps) {
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3">
+        <LocalizedLink to="/" className="flex items-center gap-3">
           <div className="bg-gradient-to-br from-teal-500 to-cyan-500 p-2 rounded-lg">
             <Shield className="w-6 h-6 text-slate-950" />
           </div>
           <span className="text-white">Titus</span>
-        </Link>
+        </LocalizedLink>
 
         {/* Navigation and Language switcher */}
         <div className="flex items-center gap-4">
@@ -35,7 +35,7 @@ export function Header({ showBlogLink = true }: HeaderProps) {
               asChild
               className="text-slate-300 hover:text-teal-400 hover:bg-teal-500/10"
             >
-              <Link to="/blog">{t.blog.title}</Link>
+              <LocalizedLink to="/blog">{t.blog.title}</LocalizedLink>
             </Button>
           )}
           

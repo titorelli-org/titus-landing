@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowLeft, Calendar } from "lucide-react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { LocalizedLink } from "../LocalizedLink";
 import { blogPosts } from "../../lib/blogData";
 import { useLanguage } from "../../lib/LanguageContext";
 import { Button } from "../ui/button";
@@ -17,7 +18,7 @@ export function BlogArticle() {
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-slate-400">{t.blog.notFound}</p>
           <Button asChild className="mt-4">
-            <Link to="/blog">{t.blog.backToIndex}</Link>
+            <LocalizedLink to="/blog">{t.blog.backToIndex}</LocalizedLink>
           </Button>
         </div>
       </div>
@@ -38,10 +39,10 @@ export function BlogArticle() {
               asChild
               className="mb-8 text-teal-400 hover:text-teal-300 hover:bg-teal-500/10"
             >
-              <Link to="/blog">
+              <LocalizedLink to="/blog">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 {t.blog.backToIndex}
-              </Link>
+              </LocalizedLink>
             </Button>
           </motion.div>
 
