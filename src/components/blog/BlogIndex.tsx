@@ -52,10 +52,7 @@ export function BlogIndex() {
                     </div>
 
                     <p className="text-slate-700">
-                      {post.content[language]
-                        .replace(/<[^>]*>/g, "")
-                        .substring(0, 200)}
-                      ...
+                      {post.excerpt[language]}
                     </p>
                   </div>
 

@@ -5,6 +5,10 @@ export interface BlogPost {
     ru: string;
   };
   date: string;
+  excerpt: {
+    en: string;
+    ru: string;
+  };
   content: {
     en: string;
     ru: string;
@@ -19,6 +23,10 @@ export const blogPosts: BlogPost[] = [
       ru: "Titus-Bot: первый бета-релиз",
     },
     date: "2024-12-15",
+    excerpt: {
+      en: "Spam in Telegram has become a constant headache for public group admins. Most solutions force a tough choice: either lock the group behind CAPTCHAs and lose real members, or let spam take over. Titus-Bot offers a better way: reliable protection from spam in Telegram — without CAPTCHA.",
+      ru: "Спам в Telegram стал повседневной проблемой для публичных групп. Многие администраторы вынуждены выбирать: либо ставить капчу и терять новых участников, либо терпеть потоки рекламы и ботов. Titus-Bot предлагает третий путь — надёжная защита от спама в Telegram без капчи.",
+    },
     content: {
       en: `
         <h2>Spam Protection for Telegram Groups — Without CAPTCHA</h2>
